@@ -306,8 +306,7 @@ header.da-navbar {
 .article-detail-image {
   width: 100%;
   max-width: 760px;
-  height: auto;
-  max-height: 400px;
+  height: 320px;
   object-fit: cover;
   border-radius: 12px;
   margin: 0 auto;
@@ -315,7 +314,7 @@ header.da-navbar {
 }
 
 @media (min-width: 768px) {
-  .article-detail-image { max-height: 500px; }
+  .article-detail-image { height: 420px; }
 }
 
 /* RESPONSIVE ADJUSTMENTS */
@@ -388,7 +387,8 @@ body.da-page-article .article-body figure {
 
 body.da-page-article .article-body img {
   display: block;
-  max-width: 100%;
+  width: 100%;
+  max-width: 680px;
   height: auto;
   margin-left: auto;
   margin-right: auto;
