@@ -22,6 +22,7 @@ header.da-navbar {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
   transition: all 0.3s ease !important;
+  z-index: 1030 !important;
 }
 
 .da-navbar .nav-link, 
@@ -35,7 +36,7 @@ header.da-navbar {
 }
 
 .da-navbar .nav-link:hover { 
-  background: var(--da-green) !important;
+  background: var(--da-accent) !important;
   color: #fff !important;
   transform: translateY(-2px);
 }
@@ -44,12 +45,13 @@ header.da-navbar {
   border: 0; 
   box-shadow: 0 10px 30px rgba(0,0,0,.12);
   border-radius: 12px;
-  padding: 8px 0;
+  padding: 8px;
   margin-top: 8px;
   opacity: 0;
   transform: translateY(-10px);
   transition: all 0.3s ease;
   visibility: hidden;
+  z-index: 1040 !important;
 }
 
 .da-navbar .dropdown:hover .dropdown-menu {
@@ -65,15 +67,30 @@ header.da-navbar {
 }
 
 .da-navbar .dropdown-item {
-  padding: 8px 16px;
+  padding: 10px 14px;
   transition: all 0.2s ease;
-  border-radius: 8px;
-  margin: 2px 8px;
+  border-radius: 10px;
+  margin: 0;
 }
 
-.da-navbar .dropdown-item:hover {
-  background: rgba(15,118,110,0.1);
-  transform: translateX(4px);
+.da-navbar .dropdown-item:hover,
+.da-navbar .dropdown-item:focus,
+.da-navbar .dropdown-item:active,
+.da-navbar .dropdown-item.active {
+  background: var(--da-accent) !important;
+  color: #fff !important;
+}
+
+.da-navbar .dropdown-item:focus {
+  outline: none;
+}
+
+.da-navbar .nav-link:focus,
+.da-navbar .nav-link:active,
+.da-navbar .nav-link.show,
+.da-navbar .dropdown-toggle.show {
+  background: var(--da-accent) !important;
+  color: #fff !important;
 }
 
 /* CARD STYLES */
@@ -305,4 +322,81 @@ header.da-navbar {
   .da-section { padding: 48px 0; }
   .da-section-sm { padding: 32px 0; }
   .da-card:hover { transform: translateY(-4px); }
+}
+
+/* PAGE HEAD (used by multiple pages) */
+.da-pagehead { padding: 32px 0 18px; }
+
+/* FORM REQUIRED MARK */
+.req::after { content: " *"; color: #dc3545; font-weight: 600; }
+
+/*
+  PAGE-SCOPED OVERRIDES
+  (Moved from inline <style> blocks inside HTML pages)
+  We scope by body class to avoid unintended changes across pages.
+*/
+
+/* Shared "light" pages */
+body.da-page-home,
+body.da-page-artikel,
+body.da-page-article,
+body.da-page-galeri,
+body.da-page-kontak,
+body.da-page-profil,
+body.da-page-pendidikan {
+  background: #F9FAFB !important;
+  color: #111827;
+}
+
+/* PPDB pages use slightly different background */
+body.da-page-ppdb,
+body.da-page-ppdb-form {
+  background: #f0f2f5 !important;
+}
+
+/* Home sidebar: keep sticky, but don't overlay dropdown menus */
+body.da-page-home .da-home-latest-sticky {
+  top: 100px;
+  z-index: 1 !important;
+}
+
+body.da-page-home #homeLatestArticlesCompact {
+  max-height: calc(100vh - 220px);
+  overflow: auto;
+}
+
+/* Footer (consistent across pages) */
+.da-footer {
+  background: var(--da-accent) !important;
+  color: #fff !important;
+}
+
+/* Page-specific tweaks */
+body.da-page-article .article-body p { line-height: 1.8; }
+
+body.da-page-profil .btn-light:hover,
+body.da-page-profil .btn-outline-light:hover {
+  background: #10B981 !important;
+  border-color: #10B981 !important;
+  color: #fff !important;
+}
+
+body.da-page-pendidikan .btn-light:hover {
+  background: #10B981 !important;
+  border-color: #10B981 !important;
+  color: #fff !important;
+}
+
+/* Per-page .da-card overrides (previously inline) */
+body.da-page-galeri .da-card {
+  border: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+body.da-page-ppdb-form .da-card {
+  border: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  border-radius: 16px;
 }

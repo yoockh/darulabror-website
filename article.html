@@ -7,65 +7,14 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/main.css">
-
-  <style>
-    body { background: #F9FAFB !important; color: #111827; }
-    .da-navbar {
-      background: rgba(255, 255, 255, 0.15) !important;
-      backdrop-filter: blur(20px) !important;
-      -webkit-backdrop-filter: blur(20px) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
-    }
-    .da-navbar .nav-link, .da-navbar .navbar-brand {
-      color: #0F766E !important;
-      font-weight: 600;
-      border-radius: 20px;
-      padding: 8px 16px !important;
-      margin: 0 4px;
-      transition: all 0.3s ease;
-    }
-    .da-navbar .nav-link:hover {
-      background: #10B981 !important;
-      color: #fff !important;
-      transform: translateY(-2px);
-    }
-    .btn-success {
-      background: #10B981 !important;
-      border-color: #10B981 !important;
-    }
-    .btn-success:hover {
-      background: #10B981 !important;
-      border-color: #10B981 !important;
-    }
-    .btn-success:hover {
-      background: #10B981 !important;
-      border-color: #10B981 !important;
-    }
-    .btn-success:hover {
-      background: #0d9668 !important;
-      border-color: #0d9668 !important;
-    }
-    footer {
-      background: #10B981 !important;
-    }
-    .dropdown-menu .dropdown-item:hover {
-      background: #10B981 !important;
-      color: #fff !important;
-    }
-    .article-body p { line-height: 1.8; }
-  
-  </style>
+  <link rel="stylesheet" href="assets/css/main.css?v=20251229_2">
 </head>
 
-<body class="min-vh-100 d-flex flex-column">
+<body class="min-vh-100 d-flex flex-column da-page-article">
   <header class="navbar navbar-expand-lg  sticky-top da-navbar">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bitmap_VS_SVG.svg" alt="Logo" width="28" height="28" style="border-radius:6px;background:#fff;">
-        Darul Abror
+        <img src="assets/img/logo.png" alt="Logo Darul Abror" style="height:40px;">
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDA" aria-controls="navbarDA" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,7 +81,7 @@
     <div id="articleRoot"></div>
   </main>
 
-  <footer class="mt-auto" style="background:#0F766E;color:#fff;">
+  <footer class="mt-auto da-footer">
     <div class="container py-4">
       <div class="small" style="opacity:.8;">© <span id="year"></span> Darul Abror</div>
     </div>
