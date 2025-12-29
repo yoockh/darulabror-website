@@ -304,7 +304,8 @@ header.da-navbar {
 
 /* ARTICLE DETAIL IMAGE */
 .article-detail-image {
-  max-width: 100%;
+  width: 100%;
+  max-width: 760px;
   height: auto;
   max-height: 400px;
   object-fit: cover;
@@ -373,6 +374,25 @@ body.da-page-home #homeLatestArticlesCompact {
 
 /* Page-specific tweaks */
 body.da-page-article .article-body p { line-height: 1.8; }
+
+body.da-page-article .article-body {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.da-page-article .article-body figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+body.da-page-article .article-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 body.da-page-profil .btn-light:hover,
 body.da-page-profil .btn-outline-light:hover {
