@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darul Abror</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  
+  <style>
+    body { background: #F9FAFB !important; color: #111827; }
+    .da-navbar {
+      background: rgba(255, 255, 255, 0.15) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    }
+    .da-navbar .nav-link, .da-navbar .navbar-brand {
+      color: #0F766E !important;
+      font-weight: 600;
+      border-radius: 20px;
+      padding: 8px 16px !important;
+      margin: 0 4px;
+      transition: all 0.3s ease;
+    }
+    .da-navbar .nav-link:hover {
+      background: #10B981 !important;
+      color: #fff !important;
+      transform: translateY(-2px);
+    }
+    .btn-success {
+      background: #10B981 !important;
+      border-color: #10B981 !important;
+    }
+    .btn-success:hover {
+      background: #10B981 !important;
+      border-color: #10B981 !important;
+    }
+    .btn-success:hover {
+      background: #10B981 !important;
+      border-color: #10B981 !important;
+    }
+    .btn-success:hover {
+      background: #0d9668 !important;
+      border-color: #0d9668 !important;
+    }
+    .btn-outline-success {
+      border-color: #10B981 !important;
+      color: #10B981 !important;
+    }
+    .btn-outline-success:hover {
+      background: #10B981 !important;
+      border-color: #10B981 !important;
+      color: #fff !important;
+    }
+    footer {
+      background: #10B981 !important;
+    }
+    .dropdown-menu .dropdown-item:hover {
+      background: #10B981 !important;
+      color: #fff !important;
+    }
+  
+  </style>
+</head>
+
+<body class="min-vh-100">
+  <!-- NAVBAR -->
+  <header class="navbar navbar-expand-lg sticky-top da-navbar">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
+        <!-- placeholder logo sementara -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bitmap_VS_SVG.svg" alt="Logo" width="28" height="28" style="border-radius:6px;background:#fff;">
+        Darul Abror
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDA" aria-controls="navbarDA" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <nav class="collapse navbar-collapse" id="navbarDA">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="/"><i class="bi bi-house-door me-1"></i>Beranda</a>
+          </li>
+
+          <!-- Media (pindah dekat Beranda) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Media</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/artikel">Berita / Artikel</a></li>
+              <li><a class="dropdown-item" href="/galeri">Galeri Foto</a></li>
+            </ul>
+          </li>
+
+          <!-- Profil -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Profil</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/profil#tentang">Tentang Pesantren</a></li>
+              <li><a class="dropdown-item" href="/profil#visi-misi">Visi & Misi</a></li>
+              <li><a class="dropdown-item" href="/profil#sejarah">Sejarah</a></li>
+              <li><a class="dropdown-item" href="/profil#pimpinan">Pimpinan & Asatidz</a></li>
+              <li><a class="dropdown-item" href="/profil#fasilitas">Fasilitas</a></li>
+              <li><a class="dropdown-item" href="/profil#lokasi">Lokasi / Denah</a></li>
+            </ul>
+          </li>
+
+          <!-- Pendidikan -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Pendidikan</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/pendidikan#salaf">Program Salaf / Diniyah</a></li>
+              <li><a class="dropdown-item" href="/pendidikan#smp">Formal SMP</a></li>
+              <li><a class="dropdown-item" href="/pendidikan#sma">Formal SMA</a></li>
+              <li><a class="dropdown-item" href="/pendidikan#kurikulum">Kurikulum</a></li>
+              <li><a class="dropdown-item" href="/pendidikan#jadwal">Jadwal Kegiatan</a></li>
+              <li><a class="dropdown-item" href="/pendidikan#adab">Tata Tertib / Adab Santri</a></li>
+            </ul>
+          </li>
+
+          <!-- PPDB -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">PPDB</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/ppdb#info">Info Pendaftaran</a></li>
+              <li><a class="dropdown-item" href="/ppdb#alur">Alur Pendaftaran</a></li>
+              <li><a class="dropdown-item fw-semibold" href="/ppdb-form">Form Pendaftaran</a></li>
+              <li><a class="dropdown-item" href="/ppdb#faq">FAQ</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/kontak"><i class="bi bi-envelope me-1"></i>Kontak</a>
+          </li>
+
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-success fw-semibold" href="/ppdb-form">
+              <i class="bi bi-pencil-square me-1"></i>Daftar PPDB
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CAROUSEL -->
+  <section class="bg-dark">
+    <div id="daCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <img class="d-block da-carousel-img"
+              src="assets/img/putra.JPG"
+              style="object-position:center 20%;"
+              alt="Darul Abror">
+          <div class="carousel-caption text-start">
+            <div class="p-3 p-md-4" style="background:rgba(0,0,0,.45);border-radius:16px;display:inline-block;">
+              <h1 class="h2 fw-bold mb-2">Pondok Pesantren Darul Abror</h1>
+              <p class="mb-3">Pendidikan salaf, pembinaan adab, serta formal SMP & SMA.</p>
+              <a class="btn btn-success" href="/ppdb-form">Daftar PPDB</a>
+              <a class="btn btn-outline-light ms-2" href="/pendidikan">Lihat Program</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img class="d-block da-carousel-img"
+            src="assets/img/radio-da.JPG"
+            style="object-position:center 20%;"
+            alt="Program Salaf">
+          <div class="carousel-caption">
+            <div class="p-3 p-md-4" style="background:rgba(0,0,0,.45);border-radius:16px;display:inline-block;">
+              <h2 class="h4 fw-semibold mb-1">Program Salaf / Diniyah</h2>
+              <p class="mb-0">Penguatan ilmu, adab, dan pembiasaan ibadah.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img class="d-block da-carousel-img"
+            src="assets/img/putri.JPG"
+            style="object-position:center 15%;"
+            alt="Formal SMP SMA">
+          <div class="carousel-caption text-end">
+            <div class="p-3 p-md-4" style="background:rgba(0,0,0,.45);border-radius:16px;display:inline-block;">
+              <h2 class="h4 fw-semibold mb-1">Formal SMP & SMA</h2>
+              <p class="mb-0">Pembelajaran terstruktur, beriring dengan pendidikan pesantren.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#daCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Prev</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#daCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- QUICK CTA STRIP -->
+  <section class="da-cta-strip py-3">
+    <div class="container">
+      <div class="row g-2">
+        <div class="col-6 col-lg-3">
+          <a class="btn btn-outline-success w-100" href="/ppdb"><i class="bi bi-megaphone me-1"></i>Info PPDB</a>
+        </div>
+        <div class="col-6 col-lg-3">
+          <a class="btn btn-outline-success w-100" href="/pendidikan"><i class="bi bi-mortarboard me-1"></i>Program</a>
+        </div>
+        <div class="col-6 col-lg-3">
+          <a class="btn btn-outline-success w-100" href="/profil#lokasi"><i class="bi bi-geo-alt me-1"></i>Lokasi</a>
+        </div>
+        <div class="col-6 col-lg-3">
+          <a class="btn btn-outline-success w-100" href="/artikel"><i class="bi bi-newspaper me-1"></i>Artikel</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: Main Content Layout -->
+  <section class="da-section">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Left Column: 2/3 width -->
+        <div class="col-lg-8">
+          
+          <!-- Profil singkat -->
+          <div class="mb-5">
+            <div class="row align-items-center g-4">
+              <div class="col-md-6">
+                <h2 class="fw-bold mb-3">Profil Singkat</h2>
+                <p class="da-muted mb-3">
+                  Pondok Pesantren Darul Abror terletak di Dukuh Klencong, Desa Pengkol, Kecamatan Karanggede, Boyolali, Jawa Tengah. 
+                  Sebagai lembaga pendidikan Islam, pesantren ini berfokus pada pembinaan santri dalam ilmu agama, akhlak, dan keterampilan hidup.
+                </p>
+                <a href="/profil" class="btn btn-success">Selengkapnya</a>
+              </div>
+              <div class="col-md-6">
+                <div class="da-card zoom-hover">
+                  <img src="assets/img/pesantren1.jpg"
+                    alt="Foto Pesantren" class="w-100" style="max-height:280px;object-fit:cover;">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Program unggulan -->
+          <div class="mb-5">
+            <div class="d-flex align-items-end justify-content-between gap-3 mb-4">
+              <div>
+                <h2 class="fw-bold mb-1">Program Unggulan</h2>
+              </div>
+              <a href="/pendidikan" class="btn btn-outline-success">Lihat Semua</a>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <div class="card da-card h-100">
+                  <div class="card-body">
+                    <div class="fw-semibold mb-1"><i class="bi bi-book me-2"></i>Salaf / Diniyah</div>
+                    <div class="da-muted">Pembelajaran kitab, pembiasaan ibadah harian, dan pembinaan adab bagi santri.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card da-card h-100">
+                  <div class="card-body">
+                    <div class="fw-semibold mb-1"><i class="bi bi-journal-text me-2"></i>Qiraati & Tahfidz</div>
+                    <div class="da-muted">Program untuk meningkatkan kemampuan membaca Al-Qur'an dan hafalan dengan metode Qiraati.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card da-card h-100">
+                  <div class="card-body">
+                    <div class="fw-semibold mb-1"><i class="bi bi-mortarboard me-2"></i>Formal SMP</div>
+                    <div class="da-muted">Pendidikan formal setingkat SMP yang terpadu dengan kegiatan pesantren.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card da-card h-100">
+                  <div class="card-body">
+                    <div class="fw-semibold mb-1"><i class="bi bi-mortarboard-fill me-2"></i>Formal SMA</div>
+                    <div class="da-muted">Pendampingan akademik tingkat SMA dengan pembinaan akhlak dan kepemimpinan.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PPDB highlight -->
+          <div class="mb-5">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-7">
+                <h2 class="fw-bold mb-3">PPDB — Pendaftaran Santri</h2>
+                <p class="da-muted mb-3">
+                  Pondok Pesantren Darul Abror membuka pendaftaran santri baru & pindahan. Silakan isi form pendaftaran dengan lengkap dan benar.
+                </p>
+                <div class="row g-2 mb-3">
+                  <div class="col-md-6">
+                    <div class="p-3 bg-white rounded-4 border">
+                      <div class="fw-semibold mb-1">Syarat ringkas</div>
+                      <ul class="da-muted small mb-0">
+                        <li>NISN Santri</li>
+                        <li>Data Orang Tua</li>
+                        <li>Asal Sekolah Santri</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="p-3 bg-white rounded-4 border">
+                      <div class="fw-semibold mb-1">Alur singkat</div>
+                      <ul class="da-muted small mb-0">
+                        <li>Isi Form Pendaftaran</li>
+                        <li>Verifikasi data</li>
+                        <li>Informasi lanjutan</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <a class="btn btn-success" href="/ppdb-form"><i class="bi bi-pencil-square me-1"></i>Isi Form Pendaftaran</a>
+                  <a class="btn btn-outline-success ms-2" href="/ppdb">Lihat Info PPDB</a>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="da-card zoom-hover">
+                  <img src="assets/img/ppdb.JPG"
+                    alt="PPDB" class="w-100" style="max-height:300px;object-fit:cover;">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: 1/3 width -->
+        <div class="col-lg-4">
+          <div class="sticky-top" style="top: 100px;">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h3 class="h5 fw-bold mb-0">Artikel Terbaru</h3>
+              <a href="/artikel" class="btn btn-sm btn-outline-success">Lihat Semua</a>
+            </div>
+            <div id="homeLatestArticlesCompact">
+              <div class="text-muted">Memuat artikel…</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="mt-5" style="background:#0F766E;color:#fff;">
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="fw-bold mb-2">Darul Abror</div>
+          <div style="opacity:.85;">Klencong RT.02/RW.01, Pengkol, Karanggede, Boyolali, Jawa Tengah.</div>
+        </div>
+        <div class="col-lg-4">
+          <div class="fw-semibold mb-2">Kontak</div>
+          <div style="opacity:.85;" class="mb-3">
+            <div><i class="bi bi-whatsapp me-2"></i>WA: 08xxxxxxxxxx</div>
+            <div><i class="bi bi-telephone me-2"></i>Telp: 0xxxxxxxx</div>
+            <div><i class="bi bi-envelope me-2"></i>Email: info@darulabror.com</div>
+          </div>
+          <div class="social-icons">
+            <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" title="TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="fw-semibold mb-2">Lokasi</div>
+          <a
+  class="btn btn-outline-light w-100"
+  href="https://maps.app.goo.gl/6HkkiE767ecg5sQ49"
+  target="_blank"
+  rel="noopener"
+>Buka Maps</a>
+        </div>
+      </div>
+
+      <hr class="my-4" style="opacity:.15;">
+      <div class="small" style="opacity:.8;">© <span id="year"></span> Darul Abror</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Home: latest articles -->
+  <script src="assets/js/home-latest-articles.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PPDB - Darul Abror</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    body { background: #f0f2f5 !important; }
+    .da-navbar {
+      background: rgba(255, 255, 255, 0.15) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    }
+    .da-navbar .nav-link, .da-navbar .navbar-brand {
+      color: #0F766E !important;
+      font-weight: 600;
+      border-radius: 20px;
+      padding: 8px 16px !important;
+      margin: 0 4px;
+      transition: all 0.3s ease;
+    }
+    .da-navbar .nav-link:hover {
+      background: #10B981 !important;
+      color: #fff !important;
+      transform: translateY(-2px);
+    }
+    .btn-success {
+      background: #10B981 !important;
+      border-color: #10B981 !important;
+    }
+    .btn-success:hover {
+      background: #10B981 !important;
+      border-color: #10B981 !important;
+    }
+    .btn-success:hover {
+      background: #10B981 !important;
+      border-color: #0F766E !important;
+    }
+    .btn-success:hover {
+      background: #0d9668 !important;
+      border-color: #0d9668 !important;
+    }
+    footer {
+      background: #10B981 !important;
+    }
+    .dropdown-menu .dropdown-item:hover {
+      background: #10B981 !important;
+      color: #fff !important;
+    }
+  
+  </style>
+</head>
+
+<body class="min-vh-100 d-flex flex-column">
+  <header class="navbar navbar-expand-lg sticky-top da-navbar">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bitmap_VS_SVG.svg" alt="Logo" width="28" height="28" style="border-radius:6px;background:#fff;">
+        Darul Abror
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDA" aria-controls="navbarDA" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <nav class="collapse navbar-collapse" id="navbarDA">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="/"><i class="bi bi-house-door me-1"></i>Beranda</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Media</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/artikel">Berita / Artikel</a></li>
+              <li><a class="dropdown-item" href="/galeri">Galeri Foto</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Profil</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/profil#tentang">Tentang Pesantren</a></li>
+              <li><a class="dropdown-item" href="/profil#visi-misi">Visi & Misi</a></li>
+              <li><a class="dropdown-item" href="/profil#sejarah">Sejarah</a></li>
+              <li><a class="dropdown-item" href="/profil#pimpinan">Pimpinan & Asatidz</a></li>
+              <li><a class="dropdown-item" href="/profil#fasilitas">Fasilitas</a></li>
+              <li><a class="dropdown-item" href="/profil#lokasi">Lokasi / Denah</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Pendidikan</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/pendidikan#salaf">Program Salaf / Diniyah</a></li>
+              <li><a class="dropdown-item" href="/pendidikan#smp">Formal SMP</a></li>
+              <li><a class="dropdown-item" href="/pendidikan#sma">Formal SMA</a></li>
+              <li><a class="dropdown-item" href="/pendidikan#kurikulum">Kurikulum</a></li>
+              <li><a class="dropdown-item" href="/pendidikan#jadwal">Jadwal Kegiatan</a></li>
+              <li><a class="dropdown-item" href="/pendidikan#adab">Tata Tertib / Adab Santri</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">PPDB</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item active" href="/ppdb#info">Info Pendaftaran</a></li>
+              <li><a class="dropdown-item" href="/ppdb#alur">Alur Pendaftaran</a></li>
+              <li><a class="dropdown-item fw-semibold" href="/ppdb-form">Form Pendaftaran</a></li>
+              <li><a class="dropdown-item" href="/ppdb#faq">FAQ</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="/kontak"><i class="bi bi-envelope me-1"></i>Kontak</a></li>
+
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-success fw-semibold" href="/ppdb-form"><i class="bi bi-pencil-square me-1"></i>Daftar PPDB</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container py-4 py-lg-5 flex-grow-1">
+    <h1 class="h3 fw-bold mb-1">PPDB</h1>
+    <div class="text-muted mb-4">Pondok Pesantren Darul Abror membuka pendaftaran santri baru & pindahan. Silakan isi form pendaftaran dengan lengkap dan benar. Setelah submit, tim kami akan menghubungi Anda untuk tahap berikutnya.</div>
+
+    <div class="row g-3">
+      <div class="col-lg-6">
+        <div class="card da-card h-100">
+          <div class="card-body p-4">
+            <h2 class="h5 fw-semibold mb-2" id="info">Info Pendaftaran</h2>
+            <ul class="text-muted mb-0">
+              <li>Santri baru & pindahan</li>
+              <li>Persiapkan: NISN, data orang tua, asal sekolah, dll</li>
+              <li>Tim akan menghubungi setelah form terkirim</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card da-card h-100">
+          <div class="card-body p-4">
+            <h2 class="h5 fw-semibold mb-2" id="alur">Alur Pendaftaran</h2>
+            <ol class="text-muted mb-0">
+              <li>Isi Form Pendaftaran</li>
+              <li>Tim kami melakukan verifikasi data</li>
+              <li>Menerima informasi lanjutan untuk tahap berikutnya</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card da-card">
+          <div class="card-body p-4">
+            <h2 class="h5 fw-semibold mb-3" id="faq">FAQ - Pertanyaan yang Sering Diajukan</h2>
+            <div class="accordion faq-accordion" id="faqAccordion">
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    Kapan pendaftaran PPDB dibuka?
+                  </button>
+                </h3>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Pendaftaran PPDB dibuka sepanjang tahun. Namun, untuk tahun ajaran baru biasanya dibuka mulai bulan Februari hingga Juni.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    Apa saja syarat pendaftaran santri baru?
+                  </button>
+                </h3>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Syarat utama: NISN santri, data lengkap orang tua/wali, asal sekolah, fotokopi ijazah/SKHUN (jika ada), dan mengisi formulir pendaftaran dengan lengkap.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                    Apakah ada tes masuk?
+                  </button>
+                </h3>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Ada tes sederhana berupa wawancara dan tes baca Al-Qur'an untuk mengetahui kemampuan dasar calon santri.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    Berapa biaya pendidikan di Darul Abror?
+                  </button>
+                </h3>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Informasi detail mengenai biaya pendidikan akan disampaikan saat proses verifikasi data. Kami juga menyediakan program beasiswa untuk santri berprestasi.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                    Apakah santri boleh pulang ke rumah?
+                  </button>
+                </h3>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Ya, santri diperbolehkan pulang sesuai jadwal yang telah ditentukan, biasanya setiap akhir pekan atau sebulan sekali tergantung program yang diikuti.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                    Bagaimana sistem pembelajaran di pesantren?
+                  </button>
+                </h3>
+                <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Sistem pembelajaran terpadu antara pendidikan diniyah (kitab kuning) dan formal (SMP/SMA) dengan jadwal yang terstruktur dari subuh hingga malam.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="mt-auto" style="background:#0F766E;color:#fff;">
+    <div class="container py-4">
+      <div class="small" style="opacity:.8;">© <span id="year"></span> Darul Abror</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

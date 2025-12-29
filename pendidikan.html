@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pendidikan - Darul Abror</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    body { background: #F9FAFB !important; color: #111827; }
+    .da-navbar {
+      background: rgba(255, 255, 255, 0.15) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    }
+    .da-navbar .nav-link, .da-navbar .navbar-brand {
+      color: #0F766E !important;
+      font-weight: 600;
+      border-radius: 20px;
+      padding: 8px 16px !important;
+      margin: 0 4px;
+      transition: all 0.3s ease;
+    }
+    .da-navbar .nav-link:hover {
+      background: #10B981 !important;
+      color: #fff !important;
+      transform: translateY(-2px);
+    }
+    .btn-success {
+      background: #10B981 !important;
+      border-color: #10B981 !important;
+    }
+    .btn-success:hover {
+      background: #10B981 !important;
+      border-color: #10B981 !important;
+    }
+    .btn-success:hover {
+      background: #0d9668 !important;
+      border-color: #0d9668 !important;
+    }
+    .btn-light:hover {
+      background: #10B981 !important;
+      border-color: #10B981 !important;
+      color: #fff !important;
+    }
+    footer {
+      background: #10B981 !important;
+    }
+    .dropdown-menu .dropdown-item:hover {
+      background: #10B981 !important;
+      color: #fff !important;
+    }
+    .da-hero {
+      background: #10B981 !important;
+    }
+    .text-success {
+      color: #10B981 !important;
+    }
+  </style>
+</head>
+
+<body class="min-vh-100 d-flex flex-column">
+  <!-- NAVBAR -->
+  <header class="navbar navbar-expand-lg sticky-top da-navbar">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bitmap_VS_SVG.svg" alt="Logo" width="28" height="28" style="border-radius:6px;background:#fff;">
+        Darul Abror
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDA" aria-controls="navbarDA" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <nav class="collapse navbar-collapse" id="navbarDA">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="/"><i class="bi bi-house-door me-1"></i>Beranda</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Media</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/artikel">Berita / Artikel</a></li>
+              <li><a class="dropdown-item" href="/galeri">Galeri Foto</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Profil</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/profil#tentang">Tentang Pesantren</a></li>
+              <li><a class="dropdown-item" href="/profil#visi-misi">Visi & Misi</a></li>
+              <li><a class="dropdown-item" href="/profil#sejarah">Sejarah</a></li>
+              <li><a class="dropdown-item" href="/profil#pimpinan">Pimpinan & Asatidz</a></li>
+              <li><a class="dropdown-item" href="/profil#fasilitas">Fasilitas</a></li>
+              <li><a class="dropdown-item" href="/profil#lokasi">Lokasi / Denah</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Pendidikan</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#salaf">Program Salaf / Diniyah</a></li>
+              <li><a class="dropdown-item" href="#smp">Formal SMP</a></li>
+              <li><a class="dropdown-item" href="#sma">Formal SMA</a></li>
+              <li><a class="dropdown-item" href="#kurikulum">Kurikulum</a></li>
+              <li><a class="dropdown-item" href="#jadwal">Jadwal Kegiatan</a></li>
+              <li><a class="dropdown-item" href="#adab">Tata Tertib / Adab Santri</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">PPDB</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/ppdb#info">Info Pendaftaran</a></li>
+              <li><a class="dropdown-item" href="/ppdb#alur">Alur Pendaftaran</a></li>
+              <li><a class="dropdown-item fw-semibold" href="/ppdb-form">Form Pendaftaran</a></li>
+              <li><a class="dropdown-item" href="/ppdb#faq">FAQ</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="/kontak"><i class="bi bi-envelope me-1"></i>Kontak</a></li>
+
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-success fw-semibold" href="/ppdb-form">
+              <i class="bi bi-pencil-square me-1"></i>Daftar PPDB
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow-1">
+    <!-- HERO -->
+    <section class="da-hero py-5">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-8">
+            <h1 class="h3 fw-bold mb-2">Pendidikan Terpadu</h1>
+            <p class="mb-0" style="opacity:.9;">
+              Pendidikan salaf/diniyah, tahfidz, dan formal SMP & SMA dalam satu lingkungan pembinaan yang islami dan berkualitas.
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
+              <a class="btn btn-light btn-sm" href="#salaf">Salaf</a>
+              <a class="btn btn-light btn-sm" href="#tahfidz">Tahfidz</a>
+              <a class="btn btn-light btn-sm" href="#smp">SMP</a>
+              <a class="btn btn-light btn-sm" href="#sma">SMA</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-4 py-lg-5">
+      <div class="container">
+
+        <!-- Salaf -->
+        <div id="salaf" class="anchor-offset card da-card mb-3">
+          <div class="card-body p-4 p-lg-5">
+            <h2 class="h5 fw-semibold mb-3">Program Salaf / Diniyah</h2>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3">
+                  <div class="fw-semibold mb-2"><i class="bi bi-book me-2 text-success"></i>Kitab Kuning</div>
+                  <div class="da-muted small">Pembelajaran kitab-kitab klasik seperti Fiqh, Nahwu, Sharaf, Tafsir, dan Hadits dengan metode sorogan dan bandongan.</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3">
+                  <div class="fw-semibold mb-2"><i class="bi bi-clock me-2 text-success"></i>Jadwal Diniyah</div>
+                  <div class="da-muted small">Ba'da Maghrib: Kajian kitab, Ba'da Isya: Setoran hafalan, Ba'da Subuh: Pembinaan adab dan akhlak.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tahfidz -->
+        <div id="tahfidz" class="anchor-offset card da-card mb-3">
+          <div class="card-body p-4 p-lg-5">
+            <h2 class="h5 fw-semibold mb-2">Program Tahfidz</h2>
+            <p class="da-muted mb-0">(Placeholder) Target, metode, setoran, muroja’ah.</p>
+          </div>
+        </div>
+
+        <!-- Formal SMP -->
+        <div id="smp" class="anchor-offset card da-card mb-3">
+          <div class="card-body p-4 p-lg-5">
+            <h2 class="h5 fw-semibold mb-2">Formal SMP</h2>
+            <p class="da-muted mb-0">(Placeholder) Info kurikulum formal, jam belajar, pendampingan.</p>
+          </div>
+        </div>
+
+        <!-- Formal SMA -->
+        <div id="sma" class="anchor-offset card da-card mb-3">
+          <div class="card-body p-4 p-lg-5">
+            <h2 class="h5 fw-semibold mb-2">Formal SMA</h2>
+            <p class="da-muted mb-0">(Placeholder) Info kurikulum formal, peminatan (kalau ada), pendampingan.</p>
+          </div>
+        </div>
+
+        <!-- Kurikulum -->
+        <div id="kurikulum" class="anchor-offset card da-card mb-3">
+          <div class="card-body p-4 p-lg-5">
+            <h2 class="h5 fw-semibold mb-2">Kurikulum</h2>
+            <p class="da-muted mb-0">(Placeholder) Ringkasan kurikulum diniyah + formal.</p>
+          </div>
+        </div>
+
+        <!-- Jadwal -->
+        <div id="jadwal" class="anchor-offset card da-card mb-3">
+          <div class="card-body p-4 p-lg-5">
+            <h2 class="h5 fw-semibold mb-3">Jadwal Kegiatan</h2>
+            <div class="row g-3">
+              <div class="col-lg-6">
+                <div class="p-3 bg-white border rounded-4 h-100">
+                  <div class="fw-semibold mb-1">Harian</div>
+                  <div class="da-muted">(Placeholder) Subuh–malam: ibadah, diniyah, formal, setoran, dll.</div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="p-3 bg-white border rounded-4 h-100">
+                  <div class="fw-semibold mb-1">Mingguan</div>
+                  <div class="da-muted">(Placeholder) Kegiatan pekanan: muhadharah, olahraga, kebersihan, dll.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adab -->
+        <div id="adab" class="anchor-offset card da-card">
+          <div class="card-body p-4 p-lg-5">
+            <h2 class="h5 fw-semibold mb-2">Tata Tertib / Adab Santri</h2>
+            <p class="da-muted mb-0">(Placeholder) Poin-poin adab, disiplin, dan ketentuan (versi ringkas).</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-auto" style="background:#0F766E;color:#fff;">
+    <div class="container py-4">
+      <div class="small" style="opacity:.8;">© <span id="year"></span> Darul Abror</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
