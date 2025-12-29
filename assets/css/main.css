@@ -374,6 +374,12 @@ body.da-page-home #homeLatestArticlesCompact {
 /* Page-specific tweaks */
 body.da-page-article .article-body p { line-height: 1.8; }
 
+body.da-page-article .article-detail-wrap {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 body.da-page-article .article-body {
   max-width: 760px;
   margin-left: auto;
