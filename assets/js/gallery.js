@@ -10,12 +10,15 @@ function escapeHTML(str) {
 }
 
 function isLikelyImageUrl(url) {
-  const u = String(url || "").toLowerCase();
-  if (!u.startsWith("http")) return false;
-  return (
-    u.includes(".jpg") || u.includes(".jpeg") || u.includes(".png") ||
-    u.includes(".webp") || u.includes(".gif") || u.includes(".svg")
-  );
+  const u = String(url || "").trim();
+  if (!/^https?:\/\//i.test(u)) return false;
+
+  // Many CDN image URLs (e.g. Unsplash) don't include file extensions.
+  // We only exclude obvious non-image assets.
+  const lower = u.toLowerCase();
+  if (/\.(mp4|webm|mov|avi|mkv|pdf)(\?|#|$)/.test(lower)) return false;
+
+  return true;
 }
 
 function normalizeContent(content) {
@@ -47,9 +50,10 @@ function collectImagesFromArticles(items) {
     const title = String(a?.title || "Artikel");
 
     // cover
-    if (isLikelyImageUrl(a?.photo_header) && !seen.has(a.photo_header)) {
-      seen.add(a.photo_header);
-      out.push({ url: a.photo_header, caption: title });
+    const coverUrl = a?.photo_header || a?.photoHeader || a?.cover_url || a?.coverUrl || a?.image_url || a?.imageUrl;
+    if (isLikelyImageUrl(coverUrl) && !seen.has(coverUrl)) {
+      seen.add(coverUrl);
+      out.push({ url: coverUrl, caption: title });
     }
 
     // content blocks
@@ -59,10 +63,12 @@ function collectImagesFromArticles(items) {
       const type = String(b.type || "").toLowerCase();
       if (type !== "image") continue;
 
-      const url = b.url || b.src;
+      // Support EditorJS image block: {type:"image", data:{file:{url}, caption}}
+      const url = b.url || b.src || b?.data?.file?.url || b?.data?.url;
       if (isLikelyImageUrl(url) && !seen.has(url)) {
         seen.add(url);
-        out.push({ url, caption: b.caption ? `${title} — ${b.caption}` : title });
+        const cap = b.caption || b?.data?.caption;
+        out.push({ url, caption: cap ? `${title} — ${cap}` : title });
       }
     }
   }

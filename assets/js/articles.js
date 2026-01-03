@@ -29,6 +29,12 @@ function truncate(str, maxLen) {
   return s.slice(0, maxLen - 1).trimEnd() + "…";
 }
 
+function stripHTML(html) {
+  const s = String(html ?? "");
+  // Very small + safe: drop tags for excerpts/search.
+  return s.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+}
+
 // Try to extract readable text from flexible JSONB content
 function extractTextFromContent(content) {
   let obj = content;
@@ -44,8 +50,19 @@ function extractTextFromContent(content) {
   const blocks = Array.isArray(obj.blocks) ? obj.blocks : [];
   for (const b of blocks) {
     if (!b || typeof b !== "object") continue;
-    const text = b.text || b.content || b.value; // tolerate variants
-    if (typeof text === "string" && text.trim()) return text.trim();
+    // tolerate variants + EditorJS shape { type, data: { text } }
+    const directText = b.text || b.content || b.value;
+    if (typeof directText === "string" && directText.trim()) return directText.trim();
+
+    const dataText = b?.data?.text;
+    if (typeof dataText === "string" && stripHTML(dataText)) return stripHTML(dataText);
+
+    // list blocks (EditorJS)
+    const items = b?.data?.items;
+    if (Array.isArray(items)) {
+      const firstItem = items.map((x) => stripHTML(x)).find(Boolean);
+      if (firstItem) return firstItem;
+    }
   }
 
   return "";

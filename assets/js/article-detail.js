@@ -27,6 +27,90 @@ function truncate(str, maxLen) {
   return s.slice(0, maxLen - 1).trimEnd() + "…";
 }
 
+function stripHTML(html) {
+  const s = String(html ?? "");
+  // For excerpts/search, keep it simple and safe.
+  return s.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function sanitizeInlineHTML(html) {
+  // Minimal sanitizer: allow a small set of inline tags, drop attributes.
+  // This is intentionally conservative for a public site.
+  const raw = String(html ?? "");
+  if (!raw.trim()) return "";
+
+  const allowed = new Set(["B", "STRONG", "I", "EM", "U", "BR", "CODE", "A"]);
+  const tpl = document.createElement("template");
+  tpl.innerHTML = raw;
+
+  const walker = document.createTreeWalker(tpl.content, NodeFilter.SHOW_ELEMENT);
+  const toRemove = [];
+
+  while (walker.nextNode()) {
+    const el = /** @type {HTMLElement} */ (walker.currentNode);
+    if (!allowed.has(el.tagName)) {
+      // replace element with its text content
+      const text = document.createTextNode(el.textContent || "");
+      el.replaceWith(text);
+      continue;
+    }
+
+    // Strip all attributes except safe href on <a>
+    for (const attr of Array.from(el.attributes)) {
+      el.removeAttribute(attr.name);
+    }
+
+    if (el.tagName === "A") {
+      const href = el.getAttribute("href") || "";
+      const safe = /^https?:\/\//i.test(href) && !/^javascript:/i.test(href);
+      if (!safe) {
+        // convert to plain text
+        const text = document.createTextNode(el.textContent || "");
+        toRemove.push([el, text]);
+      } else {
+        el.setAttribute("target", "_blank");
+        el.setAttribute("rel", "noopener noreferrer");
+      }
+    }
+  }
+
+  for (const [el, replacement] of toRemove) el.replaceWith(replacement);
+  return tpl.innerHTML;
+}
+
+function isPublicHttpUrl(url) {
+  const u = String(url ?? "").trim();
+  return /^https?:\/\//i.test(u);
+}
+
+function isBlobOrDataUrl(url) {
+  const u = String(url ?? "").trim().toLowerCase();
+  return u.startsWith("blob:") || u.startsWith("data:");
+}
+
+function isSafeEmbedUrl(url) {
+  const u = String(url ?? "").trim();
+  if (!isPublicHttpUrl(u)) return false;
+
+  // Allowlist common embed hosts.
+  try {
+    const parsed = new URL(u);
+    const host = parsed.hostname.toLowerCase();
+    if (host === "www.youtube.com" || host === "youtube.com") {
+      return parsed.pathname.startsWith("/embed/");
+    }
+    if (host === "www.youtube-nocookie.com" || host === "youtube-nocookie.com") {
+      return parsed.pathname.startsWith("/embed/");
+    }
+    if (host === "player.vimeo.com") {
+      return parsed.pathname.startsWith("/video/");
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}
+
 // Try to extract readable text from flexible JSONB content
 function extractTextFromContent(content) {
   let obj = content;
@@ -37,8 +121,17 @@ function extractTextFromContent(content) {
   const blocks = Array.isArray(obj.blocks) ? obj.blocks : [];
   for (const b of blocks) {
     if (!b || typeof b !== "object") continue;
-    const text = b.text || b.content || b.value;
-    if (typeof text === "string" && text.trim()) return text.trim();
+    const directText = b.text || b.content || b.value;
+    if (typeof directText === "string" && directText.trim()) return directText.trim();
+
+    const dataText = b?.data?.text;
+    if (typeof dataText === "string" && stripHTML(dataText)) return stripHTML(dataText);
+
+    const items = b?.data?.items;
+    if (Array.isArray(items)) {
+      const firstItem = items.map((x) => stripHTML(x)).find(Boolean);
+      if (firstItem) return firstItem;
+    }
   }
   return "";
 }
@@ -135,24 +228,47 @@ function renderBlocks(content) {
 
     const type = String(b.type || "").toLowerCase();
 
-    // paragraph
-    if (type === "paragraph" || b.text) {
-      const text = escapeHTML(b.text || "");
-      return text ? `<p>${text}</p>` : "";
+    // paragraph (EditorJS: {type:"paragraph", data:{text:"<b>..</b>"}})
+    if (type === "paragraph" || b.text || b?.data?.text) {
+      const raw = typeof b.text === "string" ? b.text : (typeof b?.data?.text === "string" ? b.data.text : "");
+      const safe = sanitizeInlineHTML(raw);
+      return safe ? `<p>${safe}</p>` : "";
     }
 
-    // heading
-    if (type === "heading") {
-      const level = Number(b.level || 2);
+    // heading (custom) / header (EditorJS)
+    if (type === "heading" || type === "header") {
+      const level = Number(b.level || b?.data?.level || 2);
       const tag = level >= 1 && level <= 4 ? `h${level}` : "h2";
-      const text = escapeHTML(b.text || "");
+      const raw = typeof b.text === "string" ? b.text : (typeof b?.data?.text === "string" ? b.data.text : "");
+      const text = escapeHTML(stripHTML(raw));
       return text ? `<${tag} class="mt-4">${text}</${tag}>` : "";
     }
 
     // image
     if (type === "image") {
-      const url = escapeHTML(b.url || "");
-      const caption = escapeHTML(b.caption || "");
+      const rawUrl = b.url || b.src || b?.data?.file?.url || b?.data?.url;
+      if (!isPublicHttpUrl(rawUrl)) {
+        // EditorJS in admin can produce blob: URLs for local preview.
+        // Those cannot be rendered on a different origin (public website).
+        if (rawUrl && isBlobOrDataUrl(rawUrl)) {
+          const fileName = escapeHTML(String(b?.data?.file?.name || ""));
+          const fileKey = escapeHTML(String(b?.data?.file?.fileKey || ""));
+          return `
+            <div class="alert alert-warning border my-4">
+              <div class="fw-semibold">Gambar belum tampil di website</div>
+              <div class="small">URL gambar masih lokal (blob) sehingga tidak bisa diakses publik.</div>
+              ${fileName ? `<div class="small text-muted mt-1">File: ${fileName}</div>` : ""}
+              ${fileKey ? `<div class="small text-muted">Key: ${fileKey}</div>` : ""}
+            </div>
+          `;
+        }
+
+        return "";
+      }
+
+      const url = escapeHTML(rawUrl);
+      const captionRaw = b.caption || b?.data?.caption || "";
+      const caption = escapeHTML(stripHTML(captionRaw));
       if (!url) return "";
       return `
         <figure class="my-4">
@@ -162,10 +278,66 @@ function renderBlocks(content) {
       `;
     }
 
-    // video (simple)
+    // embed (EditorJS) - used for YouTube/Vimeo
+    if (type === "embed") {
+      const rawUrl = b?.data?.embed || b?.data?.source || b?.data?.url;
+      if (!isSafeEmbedUrl(rawUrl)) return "";
+      const url = escapeHTML(rawUrl);
+
+      const captionRaw = b?.data?.caption || "";
+      const caption = escapeHTML(stripHTML(captionRaw));
+
+      return `
+        <div class="my-4">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="${url}"
+              title="Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+              class="rounded-4 border"
+            ></iframe>
+          </div>
+          ${caption ? `<div class="text-muted small mt-2">${caption}</div>` : ""}
+        </div>
+      `;
+    }
+
+    // list (EditorJS)
+    if (type === "list") {
+      const style = String(b?.data?.style || "unordered").toLowerCase();
+      const items = Array.isArray(b?.data?.items) ? b.data.items : [];
+      if (!items.length) return "";
+      const tag = style === "ordered" ? "ol" : "ul";
+      const li = items.map((x) => `<li>${escapeHTML(stripHTML(x))}</li>`).join("");
+      return `<${tag} class="my-3">${li}</${tag}>`;
+    }
+
+    // quote (EditorJS)
+    if (type === "quote") {
+      const raw = typeof b?.data?.text === "string" ? b.data.text : "";
+      const safe = sanitizeInlineHTML(raw);
+      if (!safe) return "";
+      const caption = escapeHTML(stripHTML(b?.data?.caption || ""));
+      return `
+        <figure class="my-4">
+          <blockquote class="blockquote mb-1">${safe}</blockquote>
+          ${caption ? `<figcaption class="blockquote-footer mb-0">${caption}</figcaption>` : ""}
+        </figure>
+      `;
+    }
+
+    // delimiter (EditorJS)
+    if (type === "delimiter") {
+      return `<hr class="my-4" style="opacity:.15;">`;
+    }
+
+    // video (legacy)
     if (type === "video") {
-      const url = escapeHTML(b.url || "");
-      if (!url) return "";
+      const rawUrl = b.url || b?.data?.url;
+      if (!isPublicHttpUrl(rawUrl)) return "";
+      const url = escapeHTML(rawUrl);
       return `
         <div class="ratio ratio-16x9 my-4">
           <video src="${url}" controls class="rounded-4 border"></video>
