@@ -10,7 +10,7 @@ This is the frontend public website for Darul Abror Islamic Boarding School. The
 
 - **Homepage**: Introduction, featured programs, latest articles, and quick navigation
 - **Profile**: About the institution, vision & mission, history, leadership, facilities, and location
-- **Education**: Information about Salaf/Diniyah, Tahfidz, formal SMP & SMA programs, curriculum, schedules, and student conduct
+- **Education**: Information about Salaf/Diniyah, Tahfidz, formal SMP & MA programs, curriculum, schedules, and student conduct
 - **PPDB**: Registration information, process flow, FAQ, and online registration form
 - **Articles**: News and articles from the institution
 - **Gallery**: Photo gallery (auto-generated from article images)
